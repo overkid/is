@@ -15,19 +15,16 @@ interface IProps {
   placeholder?: string;
 }
 
-interface IEmit {
-  'update:modelValue': (value: string) => void;
-}
-
 const props = withDefaults(defineProps<IProps>(), {
   modelValue: '',
   placeholder: '',
 });
 
-const emit = defineEmits<IEmit>();
+const emit = defineEmits<{ 'update:modelValue': [value: string] }>();
 
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
+
   emit('update:modelValue', target.value);
 };
 </script>
@@ -36,18 +33,22 @@ const onInput = (event: Event) => {
 .input {
   width: 100%;
   height: var(--size-field-height);
-  padding: 0 var(--space-s);
-  font-size: var(--font-size-m);
+  padding: var(--space-none) var(--space-s);
+
+  cursor: text;
+
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-m);
-  cursor: text;
+
   opacity: 1;
-  transition: border var(--transition-fast) linear,
+
+  transition:
+    border var(--transition-fast) linear,
     box-shadow var(--transition-fast) linear;
 
   &:disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 </style>

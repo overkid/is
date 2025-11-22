@@ -22,6 +22,33 @@ const props = defineProps<IProps>();
 
 .label {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+
+  height: 44px;
+  padding: 0 12px;
+
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+
+  background-color: var(--color-bg);
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(45, 109, 246, 0.15);
+  }
 }
 </style>

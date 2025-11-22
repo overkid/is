@@ -1,12 +1,13 @@
 import { Meta, StoryObj } from '@storybook/vue3';
-
+import { ref } from 'vue';
 import { UiInput } from '..';
 import { html } from '../../helpers';
-import { ref } from 'vue';
 
 const meta: Meta<typeof UiInput> = {
   component: UiInput,
   args: {
+    modelValue: '',
+    isDisabled: false,
     placeholder: 'Введите текст',
   },
 };
@@ -18,11 +19,8 @@ export const Default: StoryObj<typeof UiInput> = {
     components: { UiInput },
     setup() {
       const value = ref('');
-
       return { args, value };
     },
-    template: html`
-      <UiInput v-bind="args" v-model="value" />
-    `,
+    template: html`<UiInput v-bind="args" v-model="value" />`,
   }),
 };

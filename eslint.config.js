@@ -14,6 +14,10 @@ import { parser, options, ignores, settings, rules } from 'vue-linters-config';
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
+  {
+    ignores: ['**/*.stories.*'],
+  },
+
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/strongly-recommended'],

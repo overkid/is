@@ -1,52 +1,53 @@
 <template>
   <input
     :class="$style.input"
-    :value="modelValue"
+    :value="props.modelValue"
+    :placeholder="props.placeholder"
+    :disabled="props.isDisabled"
     @input="onInput"
-    :placeholder="placeholder"
-    :disabled="isDisabled"
-    :data-disabled="isDisabled"
   />
 </template>
 
 <script setup lang="ts">
 interface IProps {
   modelValue: string;
-  placeholder?: string;
   isDisabled?: boolean;
+  placeholder?: string;
 }
 
 interface IEmit {
-  'update:modelValue': [value: string];
+  'update:modelValue': (value: string) => void;
 }
 
-const props = defineProps<IProps>();
+const props = withDefaults(defineProps<IProps>(), {
+  modelValue: '',
+  placeholder: '',
+});
+
 const emit = defineEmits<IEmit>();
 
-const { modelValue, placeholder, isDisabled } = props;
-
-function onInput(e: Event) {
-  emit('update:modelValue', (e.target as HTMLInputElement).value);
-}
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  emit('update:modelValue', target.value);
+};
 </script>
 
 <style module lang="scss">
 .input {
-  display: flex;
   width: 100%;
-  padding: 10px 12px;
-  font-size: 1rem;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  height: var(--size-field-height);
+  padding: 0 var(--space-s);
+  font-size: var(--font-size-m);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-m);
+  cursor: text;
+  opacity: 1;
+  transition: border var(--transition-fast) linear,
+    box-shadow var(--transition-fast) linear;
 
-  &:focus {
-    border-color: var(--color-primary);
-  }
-
-  &[data-disabled='true'] {
+  &:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
-    opacity: 0.5;
   }
 }
 </style>

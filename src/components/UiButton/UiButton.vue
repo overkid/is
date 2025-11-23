@@ -29,14 +29,14 @@ const props = withDefaults(defineProps<IProps>(), {
 
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--color-white);
+  color: var(--color-textw);
 
   cursor: pointer;
 
   background-color: var(--color-primary);
 
   border: 1px solid var(--color-primary);
-  border-radius: 16px;
+  border-radius: 8px;
 
   box-shadow: 0 2px 8px rgba(45, 109, 246, 0.15);
 

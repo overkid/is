@@ -1,7 +1,9 @@
 <template>
   <label :class="$style.field">
     <span :class="$style.label">{{ props.label }}</span>
-    <slot></slot>
+    <div :class="$style.control">
+      <slot></slot>
+    </div>
   </label>
 </template>
 
@@ -30,16 +32,13 @@ const props = defineProps<IProps>();
   display: flex;
   align-items: center;
 
-  height: 44px;
-  padding: 0 12px;
-
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-text);
+  height: 48px;
+  padding: 0 1px;
 
   background-color: var(--color-bg);
 
-  border: 1px solid var(--color-border);
+  /* stylelint-disable-next-line length-zero-no-unit */
+  border: 0px solid var(--color-border);
   border-radius: 12px;
 
   transition:

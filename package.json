@@ -1,7 +1,7 @@
 {
-  "name": "is-components-new",
+  "name": "mikhail-uikit-is422k",
   "description": "Is components",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",

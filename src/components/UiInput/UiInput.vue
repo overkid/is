@@ -32,19 +32,30 @@ const onInput = (event: Event) => {
 <style module lang="scss">
 .input {
   width: 100%;
-  height: var(--size-field-height);
-  padding: var(--space-none) var(--space-s);
+  height: 44px;
+  padding: 0 12px;
 
-  cursor: text;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  outline: none;
+  background-color: var(--color-bg);
 
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-m);
-
-  opacity: 1;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
 
   transition:
-    border var(--transition-fast) linear,
-    box-shadow var(--transition-fast) linear;
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+
+  &::placeholder {
+    color: var(--color-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(45, 109, 246, 0.15);
+  }
 
   &:disabled {
     cursor: not-allowed;
